@@ -24,3 +24,7 @@ ingredients = drinks["drinks"]
 ingredients.each do |ingredient|
   Ingredient.create(name: ingredient["strIngredient1"])
 end
+
+Cocktail.create(name: "Mint Julep")
+Cocktail.create(name: "Whiskey Sour")
+Cocktail.create(name: "Mojito")
