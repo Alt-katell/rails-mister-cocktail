@@ -1,6 +1,12 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
 
+  <% if @cocktail.photo != nil %>
+    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+   <p> no picture for this cocktail </p>
+  <% end %>
+
   <h3>Recipe</h3>
 
   <br>

@@ -1,16 +1,16 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://imbibemagazine.com/wp-content/uploads/2019/09/whiskey-passion-bordel-chicago-crdt-ethan-jollie.jpg);">
+  <div class="container">
+    <h1>Cocktails</h1>
+    <p>Create your own cocktails</p>
+    <%= link_to "Add a new cocktail", new_cocktail_path, class: "btn btn-ghost" %>
+  </div>
+</div>
+
 <div class="container">
-  <h1>Cocktails</h1>
-
-  <br>
-
   <div class="cards">
     <% @cocktails.each do |cocktail| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1600x900/?cocktail)"><%= link_to cocktail.name, cocktail_path(cocktail.id), :style => "color: white; font-weight: lighter" %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key %>')"><%= link_to cocktail.name, cocktail_path(cocktail.id), :style => "color: white; font-weight: lighter" %>
       </div>
     <% end %>
   </div>
-
-  <br>
-
-  <button class="btn btn-primary"><%= link_to "Add a new cocktail", new_cocktail_path, :style => "color: white" %></button>
 </div>
