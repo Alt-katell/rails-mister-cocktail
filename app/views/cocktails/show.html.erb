@@ -1,26 +1,33 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
 
-  <br>
-
   <h3>Recipe</h3>
 
   <br>
     <ul>
       <% @cocktail.doses.each do |dose| %>
-        <li><%= dose.description %> <%=dose.ingredient.name %></li>
+        <li><%= dose.description %> <%=dose.ingredient.name %> -
+            <%= link_to dose_path(dose.id), method: "delete", data: { confirm: "Are you sure?" } do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   <br>
 
-  <button class="btn btn-success"><%= link_to "Add a dose", new_cocktail_dose_path(@cocktail.id), :style => "color: white" %></button>
+  <div class="dose">
+    <h1>Add a new dose</h1>
 
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :description %>
+      <%= f.input :ingredient_id, collection: Ingredient.all  %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <br>
   <br>
 
   <p><%= link_to "Delete this cocktail", cocktail_path(@cocktail.id), method: "delete", data: { confirm: "Are you sure?" } %></p>
-
-  <br>
-
   <p><%= link_to "Back to cocktail list", cocktails_path %></p>
 
 </div>
