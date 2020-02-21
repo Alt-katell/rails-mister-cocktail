@@ -25,6 +25,31 @@ ingredients.each do |ingredient|
   Ingredient.create(name: ingredient["strIngredient1"])
 end
 
-Cocktail.create(name: "Mint Julep")
-Cocktail.create(name: "Whiskey Sour")
-Cocktail.create(name: "Mojito")
+mint_julep = Cocktail.create(name: "Mint Julep")
+whiskey_sour = Cocktail.create(name: "Whiskey Sour")
+mojito = Cocktail.create(name: "Mojito")
+
+
+Dose.create(description: '1/3 cup',
+            cocktail: mojito,
+            ingredient: Ingredient.where(name: 'Sugar').first)
+
+Dose.create(description: '1/3 cup',
+            cocktail: mojito,
+            ingredient: Ingredient.where(name: 'Light rum').first)
+
+Dose.create(description: '1/3 cup',
+            cocktail: whiskey_sour,
+            ingredient: Ingredient.where(name: 'Apricot brandy').first)
+
+Dose.create(description: '1/3 cup',
+            cocktail: whiskey_sour,
+            ingredient: Ingredient.where(name: 'Triple sec').first)
+
+Dose.create(description: '1/3 cup',
+            cocktail: mint_julep,
+            ingredient: Ingredient.where(name: 'Bourbon').first)
+
+Dose.create(description: '1/3 cup',
+            cocktail: mint_julep,
+            ingredient: Ingredient.where(name: 'Grenadine').first)
